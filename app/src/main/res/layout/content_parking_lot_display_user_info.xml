@@ -18,20 +18,31 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/fillUserInfoAdvice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fill_user_info"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
-        <TextView
-            android:id="@+id/userInfoName"
+        <View
+            android:id="@+id/divider2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="invisible" />
 
         <TextView
-            android:id="@+id/userInfoSurname"
+            android:id="@+id/userInfoName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />

@@ -2,7 +2,9 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.model.ParkingLotForm
 import com.example.model.enum.Keys
@@ -48,14 +50,14 @@ class ParkingLotDisplayUserInfo : AppCompatActivity() {
         if(isUserEdited) {
             val stringBuilder = StringBuilder()
             form.apply {
-                userInfoName.text = username
-                userInfoSurname.text = surname
-                userInfoEmail.text = email
-                userInfoNif.text = nif
-                userInfoPhone.text = phone
+                userInfoName.text = "Usuario: " +surname+", "+username
+                userInfoEmail.text = "Email: " + email
+                userInfoNif.text = "Nif: " + nif
+                userInfoPhone.text = "Teléfono: " + phone
             }
+            fillUserInfoAdvice.visibility = View.GONE
         } else {
-
+            fillUserInfoAdvice.visibility = View.VISIBLE
         }
     }
 

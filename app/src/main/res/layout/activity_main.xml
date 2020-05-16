@@ -95,6 +95,8 @@
         style="@style/CustomButtonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_submit" />
+        android:text="@string/btn_submit"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -1,19 +1,21 @@
 <resources>
-    <string name="app_name">Parking Application</string>
-    <string name="user_edit">Editar Informacion</string>
+    <string name="app_name">Tu Parking</string>
+    <string name="user_edit">Editar Información</string>
     <string name="user_create">Crear usuario</string>
 
     <!-- fields -->
-    <string name="name_field">Name</string>
-    <string name="surname_field">Surname</string>
+    <string name="name_field">Nombre</string>
+    <string name="surname_field">Apellidos</string>
     <string name="email_field">Email</string>
     <string name="nif_field">NIF</string>
-    <string name="phone_field">Phone</string>
+    <string name="phone_field">Teléfono</string>
 
     <!-- buttons -->
-    <string name="btn_submit">Submit</string>
+    <string name="btn_submit">Confirmar</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_parking_lot_display_user_info">Informacion del usuario</string>
+
+    <string name="fill_user_info">No existe información del usuario. Por favor completela pulsando el botón inferior</string>
+
+    <string name="title_activity_parking_lot_display_user_info">Información del usuario</string>
 
 </resources>
