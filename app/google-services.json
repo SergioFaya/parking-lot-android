@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "643748307109",
+    "firebase_url": "https://parking-lot-mastersde.firebaseio.com",
+    "project_id": "parking-lot-mastersde",
+    "storage_bucket": "parking-lot-mastersde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643748307109:android:d573d7e42f387aa53ced4c",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643748307109-33c48t3of408pdla5ahnmqgpjcn57tjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC_v-bXJ_Uo9EyogJUFALEWUlsYFlU1Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643748307109-33c48t3of408pdla5ahnmqgpjcn57tjd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

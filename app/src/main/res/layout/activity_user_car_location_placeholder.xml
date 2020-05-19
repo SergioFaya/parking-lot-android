@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMapButtons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:theme="@style/CustomButtonTheme"
+    tools:context=".UserCarLocation">
+
+    <include
+        android:id="@+id/includeMapFragment"
+        layout="@layout/fragment_user_car_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnLocationHistory"
+        style="@style/CustomButtonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_location_history"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnLastPosition"
+        style="@style/CustomButtonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_display_latest_location" />
+
+    <Button
+        android:id="@+id/btnStoreVehicleLocation"
+        style="@style/CustomButtonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_save_current_location" />
+
+</LinearLayout>

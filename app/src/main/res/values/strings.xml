@@ -9,13 +9,20 @@
     <string name="email_field">Email</string>
     <string name="nif_field">NIF</string>
     <string name="phone_field">Teléfono</string>
+    <string name="your_vehicle">Tu vehículo</string>
 
     <!-- buttons -->
     <string name="btn_submit">Confirmar</string>
-
+    <string name="btn_save_current_location">Guardar Ubicación Actual</string>
+    <string name="btn_location_history">Historial de Ubicaciones</string>
+    <string name="btn_display_latest_location">Última Posición</string>
 
     <string name="fill_user_info">No existe información del usuario. Por favor completela pulsando el botón inferior</string>
 
     <string name="title_activity_parking_lot_display_user_info">Información del usuario</string>
+    <string name="title_activity_user_car_location">Tu zona de aparcamiento</string>
 
+    <!-- toast -->
+    <string name="funcionalidad_3">Funcionalidad disponible en entrega 3</string> <!--TODO: Eliminar -->
+    <string name="vehicle_not_saved">No has guardado ninguna ubicación de vehículo</string>
 </resources>

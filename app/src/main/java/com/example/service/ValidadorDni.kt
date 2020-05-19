@@ -43,6 +43,17 @@ internal object ValidadorDNI {
             do {
                 caracterASCII = dni.codePointAt(i)
                 esValido = caracterASCII > 47 && caracterASCII < 58
+                private fun locationToLatLng(currentLocation: Location): LatLng {
+                    return LatLng(currentLocation.latitude, currentLocation.longitude)
+                }
+
+                private fun serializeLatLng(latLng: LatLng): String {
+                    return Gson().toJson(latLng)
+                }
+
+                private fun deserializeLatLng(latLng: String): LatLng {
+                    return Gson().fromJson<LatLng>(latLng, LatLng::class.java)
+                }
                 i++
             } while (i < dni.length - 1 && esValido)
         }

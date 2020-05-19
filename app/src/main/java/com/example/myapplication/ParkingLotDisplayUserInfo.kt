@@ -66,7 +66,7 @@ class ParkingLotDisplayUserInfo : AppCompatActivity() {
             // TODO: revisar putExtra
         }
         btnCircleEdit.setOnClickListener { view ->
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+
             startActivity(intent)
         }
     }
