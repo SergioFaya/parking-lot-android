@@ -2,13 +2,11 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.model.ParkingLotForm
 import com.example.model.enum.Keys
-
 import kotlinx.android.synthetic.main.activity_parking_lot_display_user_info.*
 import kotlinx.android.synthetic.main.content_parking_lot_display_user_info.*
 
@@ -35,9 +33,9 @@ class ParkingLotDisplayUserInfo : AppCompatActivity() {
 
     private fun loadUserInfo() {
         val sharedPreferences = getSharedPreferences(Keys.USER_FORM.value, Context.MODE_PRIVATE)
-        val json : String? = sharedPreferences.getString(Keys.USER_SHARED_PREFERENCES.value, null)
+        val json: String? = sharedPreferences.getString(Keys.USER_SHARED_PREFERENCES.value, null)
 
-        val form =  ParkingLotForm()
+        val form = ParkingLotForm()
         if (json != null) {
             form.deserialize(json)
             displayInfo(form, true)
@@ -46,11 +44,11 @@ class ParkingLotDisplayUserInfo : AppCompatActivity() {
         }
     }
 
-    private fun displayInfo(form: ParkingLotForm, isUserEdited: Boolean){
-        if(isUserEdited) {
+    private fun displayInfo(form: ParkingLotForm, isUserEdited: Boolean) {
+        if (isUserEdited) {
             val stringBuilder = StringBuilder()
             form.apply {
-                userInfoName.text = "Usuario: " +surname+", "+username
+                userInfoName.text = "Usuario: " + surname + ", " + username
                 userInfoEmail.text = "Email: " + email
                 userInfoNif.text = "Nif: " + nif
                 userInfoPhone.text = "Teléfono: " + phone
@@ -61,14 +59,18 @@ class ParkingLotDisplayUserInfo : AppCompatActivity() {
         }
     }
 
-    private fun configureEvents(){
-        val intent = Intent(this, ParkingLotEditUserInfo::class.java).apply {
-            // TODO: revisar putExtra
-        }
+    private fun configureEvents() {
+        val intent = Intent(this, ParkingLotEditUserInfo::class.java)
         btnCircleEdit.setOnClickListener { view ->
-
             startActivity(intent)
         }
+
+        btnDisplayMap.setOnClickListener({ openMapActivity() })
     }
 
+
+    private fun openMapActivity() {
+        val intent = Intent(this, UserCarLocationActivity::class.java)
+        startActivity(intent)
+    }
 }

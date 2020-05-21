@@ -12,9 +12,12 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.model.LocationHistory
+import com.example.model.LocationHistoryList
 import com.example.model.enum.Keys
 import com.example.service.LocationServices.deserializeLatLng
 import com.example.service.LocationServices.locationToLatLng
+import com.example.service.LocationServices.reverseGeocoding
 import com.example.service.LocationServices.serializeLatLng
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,7 +29,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_user_car_location_placeholder.*
 
-class UserCarLocation : AppCompatActivity(), OnMapReadyCallback {
+class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val PERMISSION_ID = 101;
 
@@ -146,8 +149,8 @@ class UserCarLocation : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.isMyLocationEnabled = true
         getCurrentLocation();
+        mMap.isMyLocationEnabled = true
     }
 
 
@@ -178,6 +181,37 @@ class UserCarLocation : AppCompatActivity(), OnMapReadyCallback {
             .edit()
             .putString(Keys.CURRENT_LOCATION.value, serializeLatLng(latLng))
             .apply()
+
+        var address = reverseGeocoding(this, latLng)
+        var currentHistory = LocationHistory(address)
+
+
+        var listHistory = getDataList()
+        listHistory.add(currentHistory)
+
+        var locationHistoryList = LocationHistoryList()
+        locationHistoryList.locationHistoryList = listHistory
+        var json = locationHistoryList.serialize()
+
+        getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE).edit()
+            .putString(Keys.LOCATION_HISTORY.value, json).commit();
+    }
+
+    fun getDataList(): ArrayList<LocationHistory> {
+        val jsonHistoryList =
+            getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE)
+                ?.getString(Keys.LOCATION_HISTORY.value, null)
+
+        if (jsonHistoryList != null) {
+            val list = LocationHistoryList()
+            list.deserialize(jsonHistoryList)
+
+            if (list != null) {
+                return list.locationHistoryList!!
+            }
+        }
+
+        return ArrayList<LocationHistory>()
     }
 
     private fun displayLastPosition() {
@@ -195,8 +229,8 @@ class UserCarLocation : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun displayLocationHistory() {
-        Toast.makeText(baseContext, getString(R.string.funcionalidad_3), Toast.LENGTH_LONG)
-            .show()
+        val intent = Intent(this, LocationHistoryActivity::class.java)
+        startActivity(intent)
     }
 
 

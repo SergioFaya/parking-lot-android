@@ -10,6 +10,7 @@
     <string name="nif_field">NIF</string>
     <string name="phone_field">Teléfono</string>
     <string name="your_vehicle">Tu vehículo</string>
+    <string name="open_map">Mapa de Parking</string>
 
     <!-- buttons -->
     <string name="btn_submit">Confirmar</string>
