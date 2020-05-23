@@ -3,6 +3,8 @@
     <color name="colorPrimary">#6C91C2</color>
     <color name="colorPrimaryDark">#36393b</color>
     <color name="colorAccent">#FA824C</color>
+    <color name="colorSpanishGray">#909590</color>
+    <color name="colorLightGray">#DCDCDC</color>
     <color name="text">#FFFFFF</color>
 
 

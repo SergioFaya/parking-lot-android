@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="@dimen/place_autocomplete_button_padding"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorLightGray"
+    android:orientation="vertical"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="2dp"
-        android:text="Dirección"
-        android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/dateLabel"
-        android:layout_width="54dp"
-        android:layout_height="24dp"
-        android:background="@color/colorPrimary"
-        android:padding="2dp"
-        android:text="Fecha: "
-        android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintBottom_toTopOf="@+id/dateField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toEndOf="@+id/address"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/dateLabel"
+            android:layout_width="294dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="2dp"
+            android:text="Fecha: "
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/text" />
 
-    <TextView
-        android:id="@+id/dateField"
-        android:layout_width="138dp"
-        android:layout_height="24dp"
-        android:background="@color/colorPrimary"
-        android:padding="2dp"
-        android:text="20/05/2020 12:20"
-        android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/dateLabel"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/dateField"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="2dp"
+            android:text="20/05/2020 12:20"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/text" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/addressField"
@@ -61,9 +55,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:padding="2dp"
-        android:text="Calle la gollesca numero 2 Calle la gollesca numero 2 Calle la gollesca numero 2 Calle la gollesca numero 2 "
+        android:text="Avenida la estacion numero 2, 3c, Nava Asturias, 33520"
         android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintTop_toBottomOf="@+id/address"
-        tools:layout_editor_absoluteX="10dp" />
+        android:textColor="@color/text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -8,7 +8,6 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
-import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -94,25 +93,11 @@ class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                     )
                 }
             } else {
-                Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show()
-                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                startActivity(intent)
+                Toast.makeText(this, "Enciende la ubicación del movil", Toast.LENGTH_LONG).show()
             }
         } else {
-            requestPermissions()
+            Toast.makeText(this, "Enciende la ubicación del movil", Toast.LENGTH_LONG).show()
         }
-    }
-
-
-    private fun requestPermissions() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ),
-            PERMISSION_ID
-        )
     }
 
     private fun checkPermissions(): Boolean {

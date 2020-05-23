@@ -1,6 +1,8 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,10 +14,12 @@ import com.example.model.enum.Keys
 import com.example.service.ParkingLotFormValidator
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener{
+class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
         // Events
         val button: Button = findViewById(R.id.btnSubmit)
@@ -38,7 +42,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener{
             ParkingLotFormValidator().validate(form)
             addFormDataToSharedPreferences(form)
             goBackToDisplayActivity()
-        } catch ( e: ValidationException) {
+        } catch (e: ValidationException) {
             // TODO: poner en rojo los campos
             Toast.makeText(v.context, e.message, Toast.LENGTH_LONG).show()
         }
@@ -46,10 +50,10 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener{
 
     private fun loadCurrentUserData() {
         val sharedPreferences = getSharedPreferences(Keys.USER_FORM.value, Context.MODE_PRIVATE)
-        val json : String? = sharedPreferences.getString(Keys.USER_SHARED_PREFERENCES.value, null)
+        val json: String? = sharedPreferences.getString(Keys.USER_SHARED_PREFERENCES.value, null)
 
-        val form =  ParkingLotForm()
-        if(json != null) {
+        val form = ParkingLotForm()
+        if (json != null) {
             form.apply {
                 deserialize(json)
                 nameEditText.setText(username)
@@ -62,7 +66,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener{
 
     }
 
-    private fun getFormFromView(v: View): ParkingLotForm{
+    private fun getFormFromView(v: View): ParkingLotForm {
         return ParkingLotForm(
             email = emailEditText.text.toString(),
             nif = nifEditText.text.toString(),
@@ -72,12 +76,13 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener{
         )
     }
 
-    private fun addFormDataToSharedPreferences(form: ParkingLotForm){
+    private fun addFormDataToSharedPreferences(form: ParkingLotForm) {
         val sharedPreferences = getSharedPreferences(Keys.USER_FORM.value, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString(Keys.USER_SHARED_PREFERENCES.value, form.serialize()).commit()
+        sharedPreferences.edit().putString(Keys.USER_SHARED_PREFERENCES.value, form.serialize())
+            .commit()
     }
 
-    private fun goBackToDisplayActivity(){
+    private fun goBackToDisplayActivity() {
         finish()
     }
 }
