@@ -33,22 +33,22 @@
             android:name=".ParkingLotDisplayUserInfo"
             android:label="@string/title_activity_parking_lot_display_user_info">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+                        <category android:name="android.intent.category.LAUNCHER" />
+                    </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".ParkingLotEditUserInfo"
             android:label="@string/user_edit">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
     </application>
 

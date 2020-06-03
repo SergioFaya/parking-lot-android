@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tu Parking</string>
-    <string name="user_edit">Editar Información</string>
+    <string name="user_edit">Usuario</string>
     <string name="user_create">Crear usuario</string>
 
     <!-- fields -->
