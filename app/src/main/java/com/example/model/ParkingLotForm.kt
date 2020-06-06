@@ -7,25 +7,30 @@ class ParkingLotForm(
     var nif: String,
     var phone: String,
     var surname: String,
-    var username: String
-){
-    constructor() : this("","","","","")
+    var username: String,
+    var password: String
+) {
+    constructor() : this("", "", "", "", "", "")
 
-    fun serialize(): String{
+    fun serialize(): String {
         val gson = Gson()
         val json = gson.toJson(this)
-        return  json
+        return json
     }
 
-    fun deserialize(json: String) {
-        val gson = Gson()
-        val form: ParkingLotForm = gson.fromJson<ParkingLotForm>(json, ParkingLotForm::class.java)
-        this.apply {
-            username = form.username
-            surname = form.surname
-            email = form.email
-            phone = form.phone
-            nif = form.nif
+    fun deserialize(json: String?) {
+        if (json != null) {
+            val gson = Gson()
+            val form: ParkingLotForm =
+                gson.fromJson<ParkingLotForm>(json, ParkingLotForm::class.java)
+            this.apply {
+                username = form.username
+                surname = form.surname
+                email = form.email
+                phone = form.phone
+                nif = form.nif
+                password = form.password
+            }
         }
     }
 }

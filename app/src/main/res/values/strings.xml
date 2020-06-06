@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Tu Parking</string>
-    <string name="user_edit">Usuario</string>
+    <string name="user_edit">Editar Información</string>
     <string name="user_create">Crear usuario</string>
+    <string name="user_register">Registro</string>
 
     <!-- fields -->
     <string name="name_field">Nombre</string>
@@ -26,4 +27,8 @@
     <!-- toast -->
     <string name="funcionalidad_3">Funcionalidad disponible en entrega 3</string> <!--TODO: Eliminar -->
     <string name="vehicle_not_saved">No has guardado ninguna ubicación de vehículo</string>
+    <string name="password_field">Contraseña</string>
+
+    <string name="login">Login</string>
+    <string name="register">Registro</string>
 </resources>

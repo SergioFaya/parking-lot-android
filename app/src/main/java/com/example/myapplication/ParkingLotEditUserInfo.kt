@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
@@ -22,7 +23,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
         // Events
-        val button: Button = findViewById(R.id.btnSubmit)
+        val button: Button = findViewById(R.id.btnRegister)
         button.setOnClickListener(this)
     }
 
@@ -72,7 +73,8 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
             nif = nifEditText.text.toString(),
             phone = phoneEditText.text.toString(),
             surname = surnameEditText.text.toString(),
-            username = nameEditText.text.toString()
+            username = nameEditText.text.toString(),
+            password = passwordEditText.text.toString()
         )
     }
 
@@ -84,5 +86,8 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
 
     private fun goBackToDisplayActivity() {
         finish()
+        val intent = Intent(this, ParkingLotDisplayUserInfo::class.java)
+        startActivity(intent)
     }
+
 }

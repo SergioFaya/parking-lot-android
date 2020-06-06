@@ -6,6 +6,13 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+
+    <!--
+         <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+ -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -16,39 +23,32 @@
         android:roundIcon="@mipmap/ic_launcher_parking_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <activity android:name=".LocationHistoryActivity">
-
-        </activity>
-
-        <activity
-            android:name=".UserCarLocationActivity"
-            android:label="@string/title_activity_user_car_location">
-
-        </activity>
-        <activity
-            android:name=".ParkingLotDisplayUserInfo"
-            android:label="@string/title_activity_parking_lot_display_user_info">
-
-            <!--
-                    <intent-filter>
-                        <action android:name="android.intent.action.MAIN" />
-                        <category android:name="android.intent.category.LAUNCHER" />
-                    </intent-filter>
-            -->
-        </activity>
-        <activity
-            android:name=".ParkingLotEditUserInfo"
-            android:label="@string/user_edit">
-
+        <activity android:name=".ParkingLotLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".LocationHistoryActivity"></activity>
+        <activity
+            android:name=".UserCarLocationActivity"
+            android:label="@string/title_activity_user_car_location"></activity>
+        <activity
+            android:name=".ParkingLotDisplayUserInfo"
+            android:label="@string/title_activity_parking_lot_display_user_info"></activity>
+        <activity
+            android:name=".ParkingLotEditUserInfo"
+            android:label="@string/user_edit" />
+        <activity
+            android:name=".ParkingLotRegisterUser"
+            android:label="@string/user_edit">
+
         </activity>
     </application>
 
