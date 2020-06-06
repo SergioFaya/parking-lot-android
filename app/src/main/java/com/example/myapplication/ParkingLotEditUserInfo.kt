@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.firebase.DbManager
 import com.example.model.ParkingLotForm
 import com.example.model.ValidationException
 import com.example.model.enum.Keys
@@ -25,6 +26,9 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
         // Events
         val button: Button = findViewById(R.id.btnRegister)
         button.setOnClickListener(this)
+
+        passwordEditText.visibility = View.INVISIBLE
+        passwordTextView.visibility = View.INVISIBLE
     }
 
     override fun onRestart() {
@@ -42,6 +46,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
         try {
             ParkingLotFormValidator().validate(form)
             addFormDataToSharedPreferences(form)
+            addFormDataToFirebase(form);
             goBackToDisplayActivity()
         } catch (e: ValidationException) {
             // TODO: poner en rojo los campos
@@ -62,6 +67,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
                 emailEditText.setText(email)
                 phoneEditText.setText(phone)
                 nifEditText.setText(nif)
+                passwordEditText.setText(password)
             }
         }
 
@@ -70,7 +76,7 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
     private fun getFormFromView(v: View): ParkingLotForm {
         return ParkingLotForm(
             email = emailEditText.text.toString(),
-            nif = nifEditText.text.toString(),
+            nif = nifEditText.text.toString().toUpperCase(),
             phone = phoneEditText.text.toString(),
             surname = surnameEditText.text.toString(),
             username = nameEditText.text.toString(),
@@ -81,7 +87,17 @@ class ParkingLotEditUserInfo : AppCompatActivity(), View.OnClickListener {
     private fun addFormDataToSharedPreferences(form: ParkingLotForm) {
         val sharedPreferences = getSharedPreferences(Keys.USER_FORM.value, Context.MODE_PRIVATE)
         sharedPreferences.edit().putString(Keys.USER_SHARED_PREFERENCES.value, form.serialize())
-            .commit()
+            .apply()
+    }
+
+    private fun addFormDataToFirebase(form: ParkingLotForm) {
+        DbManager.updateUserInfo(form)
+            .addOnSuccessListener { documentReference ->
+                var ldoc = documentReference
+            }
+            .addOnFailureListener { e ->
+                var doc = e
+            }
     }
 
     private fun goBackToDisplayActivity() {

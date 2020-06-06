@@ -28,7 +28,7 @@ class ParkingLotForm(
                 surname = form.surname
                 email = form.email
                 phone = form.phone
-                nif = form.nif
+                nif = form.nif.toUpperCase()
                 password = form.password
             }
         }

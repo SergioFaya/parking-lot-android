@@ -5,11 +5,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class LocationHistory {
-    var address: Address? = null
+    var address: String = ""
     var date: String = ""
 
+    constructor() {
+        
+    }
+
     constructor(address: Address) {
-        this.address = address
+        this.address = address?.getAddressLine(0).toString()
         this.date = convertLongToTime(currentTimeToLong())
     }
 
@@ -28,10 +32,4 @@ class LocationHistory {
         return df.parse(date).time
     }
 
-    fun formatAddress(): String {
-
-        return StringBuilder()
-            .append(address?.getAddressLine(0))
-            .toString()
-    }
 }

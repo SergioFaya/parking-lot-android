@@ -11,8 +11,10 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.firebase.DbManager
 import com.example.model.LocationHistory
 import com.example.model.LocationHistoryList
+import com.example.model.ParkingLotForm
 import com.example.model.enum.Keys
 import com.example.service.LocationServices.deserializeLatLng
 import com.example.service.LocationServices.locationToLatLng
@@ -141,8 +143,9 @@ class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun manageClickStoreLocation() {
         placeMarkerInLocation(locationToLatLng(currentLocation!!))
-        storeLocationInSharedPreferences(locationToLatLng(currentLocation!!))
-        storeLocationInFirebase()
+        var locationHistoryList =
+            storeLocationInSharedPreferences(locationToLatLng(currentLocation!!))
+        storeLocationInFirebase(locationHistoryList)
     }
 
     private fun placeMarkerInLocation(latLng: LatLng?) {
@@ -157,11 +160,18 @@ class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    private fun storeLocationInFirebase() {
-        // TODO; Completar en tarea 3
+    private fun storeLocationInFirebase(list: LocationHistoryList) {
+        val sharedPreferences = getSharedPreferences(Keys.USER_FORM.value, Context.MODE_PRIVATE)
+        val json: String? = sharedPreferences.getString(Keys.USER_SHARED_PREFERENCES.value, null)
+
+        val form = ParkingLotForm()
+        if (json != null) {
+            form.deserialize(json)
+        }
+        DbManager.updateUserLocations(form.nif, list)
     }
 
-    private fun storeLocationInSharedPreferences(latLng: LatLng) {
+    private fun storeLocationInSharedPreferences(latLng: LatLng): LocationHistoryList {
         getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE)
             .edit()
             .putString(Keys.CURRENT_LOCATION.value, serializeLatLng(latLng))
@@ -180,6 +190,7 @@ class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE).edit()
             .putString(Keys.LOCATION_HISTORY.value, json).commit();
+        return locationHistoryList
     }
 
     fun getDataList(): ArrayList<LocationHistory> {
@@ -200,8 +211,9 @@ class UserCarLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun displayLastPosition() {
-        val latLng = getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE)
-            .getString(Keys.CURRENT_LOCATION.value, null)
+        val latLng =
+            getSharedPreferences(Keys.USER_SHARED_PREFERENCES.value, Context.MODE_PRIVATE)
+                .getString(Keys.CURRENT_LOCATION.value, null)
         if (latLng != null) {
             placeMarkerInLocation(deserializeLatLng(latLng))
         } else {

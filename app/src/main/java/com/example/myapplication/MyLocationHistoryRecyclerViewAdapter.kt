@@ -40,7 +40,7 @@ class MyLocationHistoryRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.dateView.text = item.date.toString()
-        holder.addressView.text = item.formatAddress()
+        holder.addressView.text = item.address.toString()
 
         with(holder.mView) {
             tag = item

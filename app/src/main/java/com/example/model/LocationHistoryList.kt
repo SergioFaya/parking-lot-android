@@ -6,6 +6,8 @@ class LocationHistoryList {
 
     var locationHistoryList: ArrayList<LocationHistory>? = null
 
+    var nif: String = ""
+
     fun serialize(): String {
         val gson = Gson()
         val json = gson.toJson(this)
